@@ -176,7 +176,7 @@ async function initializeWatchPlayer() {
       totalEpisodesCount = 1;
     }
 
-    document.title = `Watching ${mainTitle} Ep ${currentEpisode} - MiraiAnime`;
+    document.title = `Watching ${mainTitle} Ep ${currentEpisode} - MTCH EnterpriseAnime`;
     animeTitleHeader.textContent = mainTitle;
     document.getElementById("animeDescription").textContent = "Loading stream data and synopsis...";
     document.getElementById("episodeIndicator").textContent = `Episode ${currentEpisode}`;

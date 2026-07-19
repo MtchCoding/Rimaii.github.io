@@ -219,7 +219,7 @@ if (video && image) {
 }
 
 function injectSafeTutorialModal() {
-    if (localStorage.getItem("mirai_seen_guide_v2")) return;
+    if (localStorage.getItem("MTCH Enterprise_seen_guide_v2")) return;
 
     const cssStyle = document.createElement("style");
     cssStyle.textContent = `
@@ -257,7 +257,7 @@ function injectSafeTutorialModal() {
     overlay.innerHTML = `
         <div class="m-modal-card">
             <span class="m-modal-close">&times;</span>
-            <h3 class="m-title"><i class="fas fa-rocket"></i> Welcome to MiraiAnime!</h3>
+            <h3 class="m-title"><i class="fas fa-rocket"></i> Welcome to MTCH EnterpriseAnime!</h3>
             <p class="m-subtitle">Let's show you how to navigate our player system smoothly.</p>
             <div class="m-step">
                 <div class="m-icon"><i class="fas fa-search"></i></div>
@@ -287,7 +287,7 @@ function injectSafeTutorialModal() {
         overlay.querySelector(".m-modal-card").style.transform = "translateY(-20px)";
         setTimeout(() => {
             overlay.remove();
-            localStorage.setItem("mirai_seen_guide_v2", "true");
+            localStorage.setItem("MTCH Enterprise_seen_guide_v2", "true");
         }, 400);
     };
 
