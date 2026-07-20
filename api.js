@@ -303,6 +303,8 @@ async function initializeWatchPlayer() {
         });
         episodeGrid.appendChild(epBtn);
       }
+      const menuEl = document.getElementById("episodeDropdownMenu");
+      if (menuEl) menuEl.scrollTop = 0;
     }
 
     function renderRangeTabs() {
@@ -384,7 +386,11 @@ async function initializeWatchPlayer() {
         e.stopPropagation();
         const isOpen = episodeDropdown.classList.toggle("open");
         toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        if (isOpen) positionEpisodeDropdown();
+        if (isOpen) {
+          positionEpisodeDropdown();
+          const menuEl = document.getElementById("episodeDropdownMenu");
+          if (menuEl) menuEl.scrollTop = 0;
+        }
       });
       window.addEventListener("resize", () => {
         if (episodeDropdown.classList.contains("open")) positionEpisodeDropdown();

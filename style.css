@@ -88,10 +88,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--accent, #b06bff);
+    border: 2px dashed var(--accent, #a48cff);
     border-radius: 6px;
-    color: var(--accent, #b06bff);
-    background: rgba(176, 107, 255, 0.08);
+    color: var(--accent, #a48cff);
+    background: rgba(164, 140, 255, 0.08);
     font-weight: bold;
     font-size: 0.85rem;
     letter-spacing: 1px;
@@ -148,8 +148,8 @@ header {
 }
 
 .menu li a:hover, .menu li button:hover {
-    color: #b06bff;
-    background-color: rgba(176, 107, 255, 0.08);
+    color: #a48cff;
+    background-color: rgba(164, 140, 255, 0.08);
 }
 
 #check:checked ~ .menu {
@@ -325,7 +325,7 @@ header {
     margin-bottom: 25px;
     padding: 14px;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(176, 107, 255, 0.08);
+    border: 1px solid rgba(164, 140, 255, 0.08);
     border-radius: 12px;
 }
 
@@ -342,7 +342,7 @@ header {
     font-size: 13px;
     font-weight: 500;
     padding: 10px 36px 10px 16px;
-    border: 1px solid rgba(176, 107, 255, 0.15);
+    border: 1px solid rgba(164, 140, 255, 0.15);
     border-radius: 8px;
     cursor: pointer;
     min-width: 120px;
@@ -353,12 +353,12 @@ header {
 
 .filter-bar select:hover {
     background-color: #223a4a;
-    border-color: #b06bff;
-    box-shadow: 0 4px 14px rgba(176, 107, 255, 0.15);
+    border-color: #a48cff;
+    box-shadow: 0 4px 14px rgba(164, 140, 255, 0.15);
 }
 
 .filter-bar select:focus {
-    border-color: #7c3aed;
+    border-color: #7c4dff;
     box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
 }
 
@@ -378,7 +378,7 @@ header {
 }
 
 .unified-controls button, .trending-controls button {
-    border: 1px solid rgba(176, 107, 255, 0.1);
+    border: 1px solid rgba(164, 140, 255, 0.1);
     background: linear-gradient(135deg, #1b3545 0%, #0f1a21 100%);
     color: #ffffff;
     padding: 11px 24px;
@@ -396,8 +396,8 @@ header {
 }
 
 .unified-controls button:hover:not(:disabled), .trending-controls button:hover:not(:disabled) {
-    background: linear-gradient(135deg, #7c3aed 0%, #007bb3 100%);
-    border-color: #b06bff;
+    background: linear-gradient(135deg, #7c4dff 0%, #5b2fc9 100%);
+    border-color: #a48cff;
     box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
     transform: translateY(-2px);
 }
@@ -447,7 +447,7 @@ header {
 }
 
 .unified-controls span, .trending-controls span {
-    color: #b06bff;
+    color: #a48cff;
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -455,7 +455,7 @@ header {
     background: rgba(27, 53, 69, 0.4);
     padding: 8px 20px;
     border-radius: 50px;
-    border: 1px solid rgba(176, 107, 255, 0.2);
+    border: 1px solid rgba(164, 140, 255, 0.2);
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 

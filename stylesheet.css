@@ -58,7 +58,7 @@ a {
 }
 
 .follow-us-card a:hover {
-    color: #b06bff;
+    color: #a48cff;
 }
 
 @media (max-width: 600px) {
@@ -210,7 +210,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: #7c3aed;
+    background-color: #7c4dff;
     color: #ffffff;
     text-decoration: none;
     font-family: sans-serif;
@@ -540,7 +540,7 @@ a {
 }
 
 .footer-col ul li a:hover {
-  color: var(--accent, #b06bff);
+  color: var(--accent, #a48cff);
 }
 
 

@@ -1,7 +1,9 @@
 :root {
     --bg-main: #0d0a12;
-    --bg-card: #241b33;
-    --accent: #b06bff;
+    --bg-card: #211a2e;
+    --accent: #a48cff;
+    --accent-strong: #7c4dff;
+    --accent-strong-hover: #6738e0;
     --text-main: #c5c6c7;
     --text-light: #ffffff;
     --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
