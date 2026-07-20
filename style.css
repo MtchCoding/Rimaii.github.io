@@ -82,6 +82,23 @@ header {
     display: block;
 }
 
+.logo-placeholder {
+    height: 40px;
+    width: 172px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--accent, #b06bff);
+    border-radius: 6px;
+    color: var(--accent, #b06bff);
+    background: rgba(176, 107, 255, 0.08);
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
 /* Hamburger-toggled dropdown panel, same look at every screen size */
 .menu {
     display: flex;
