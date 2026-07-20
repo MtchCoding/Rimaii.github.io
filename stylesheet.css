@@ -458,27 +458,13 @@ a {
 
 
 .modern-footer {
-  background-color: #180f22; 
-  color: #7a7a7a;            
+  background-color: #140c1c;
+  color: #9a8fae;
   padding: 60px 4% 30px 4%;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  border-top: 2px solid #3a2c50;
+  margin-top: 40px;
 }
-
-
-.footer-container {
-  border-top: 1px solid #ebe5e5; 
-  padding-top: 40px;             
-  margin-top: 0;
-  
- 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 40px;
-}
-
 
 
 .footer-container {
@@ -489,6 +475,7 @@ a {
   margin: 0 auto;
   gap: 40px;
 }
+
 
 
 .brand-section {
@@ -510,6 +497,7 @@ a {
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 25px;
+  color: #9a8fae;
 }
 
 
@@ -545,14 +533,14 @@ a {
 }
 
 .footer-col ul li a {
-  color: #7a7a7a;
+  color: #9a8fae;
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
 .footer-col ul li a:hover {
-  color: #ffffff;
+  color: var(--accent, #b06bff);
 }
 
 
@@ -569,11 +557,18 @@ a {
 }
 
 .footer-bottom {
-  border-top: 1px solid #ebe5e5;
+  border-top: 1px solid #3a2c50;
   margin-top: 60px;
   padding-top: 25px;
   text-align: center;
   font-size: 0.85rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom p {
+  margin: 0;
 }
 
 

@@ -343,6 +343,29 @@ async function initializeWatchPlayer() {
       if (episodeDropdownLabel) episodeDropdownLabel.textContent = `Episode ${episodeNum}`;
     }
 
+    function positionEpisodeDropdown() {
+      const menuEl = document.getElementById("episodeDropdownMenu");
+      const toggleBtn = document.getElementById("episodeDropdownToggle");
+      if (!menuEl || !toggleBtn) return;
+
+      const toggleRect = toggleBtn.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const gap = 6;
+      const edgeMargin = 12;
+
+      const spaceBelow = viewportHeight - toggleRect.bottom - gap - edgeMargin;
+      const spaceAbove = toggleRect.top - gap - edgeMargin;
+
+      // Prefer opening downward; flip upward only if there's clearly more room there
+      if (spaceBelow < 200 && spaceAbove > spaceBelow) {
+        episodeDropdown.classList.add("flip-up");
+        menuEl.style.maxHeight = `${Math.max(150, spaceAbove)}px`;
+      } else {
+        episodeDropdown.classList.remove("flip-up");
+        menuEl.style.maxHeight = `${Math.max(150, spaceBelow)}px`;
+      }
+    }
+
     function closeEpisodeDropdown() {
       if (!episodeDropdown) return;
       episodeDropdown.classList.remove("open");
@@ -360,6 +383,10 @@ async function initializeWatchPlayer() {
         e.stopPropagation();
         const isOpen = episodeDropdown.classList.toggle("open");
         toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        if (isOpen) positionEpisodeDropdown();
+      });
+      window.addEventListener("resize", () => {
+        if (episodeDropdown.classList.contains("open")) positionEpisodeDropdown();
       });
       document.addEventListener("click", (e) => {
         if (!episodeDropdown.contains(e.target)) closeEpisodeDropdown();

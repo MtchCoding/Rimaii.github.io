@@ -68,6 +68,11 @@
     display: flex;
 }
 
+.episode-dropdown.flip-up .episode-dropdown-menu {
+    top: auto;
+    bottom: calc(100% + 6px);
+}
+
 .episode-range-tabs {
     display: none;
     flex-wrap: wrap;
