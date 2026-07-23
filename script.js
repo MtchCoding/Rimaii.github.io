@@ -5,8 +5,10 @@ query {
       id
       title { english romaji }
       coverImage { large }
+      bannerImage
       episodes
       format
+      averageScore
       nextAiringEpisode { episode }
     }
   }
@@ -24,7 +26,7 @@ query {
   }
 }`;
 
-function generateCardHtml(anime, index = 0) {
+function generateCardHtml(anime, index = 0, rank = null) {
     const mainTitle = anime.title.english || anime.title.romaji;
     const posterUrl = anime.coverImage.large;
     const animeFormat = anime.format || "TV";
@@ -42,9 +44,12 @@ if (anime.nextAiringEpisode) {
     totalEpisodes = 1; // fallback
 }
 
+    const rankBadge = rank ? `<span class="rank-badge">${rank}</span>` : "";
+    const rankClass = rank ? " has-rank" : "";
 
     return `
-  <div class="anime-card" style="--card-index: ${staggerDelay};">
+  <div class="anime-card${rankClass}" style="--card-index: ${staggerDelay};">
+  ${rankBadge}
   <div class="poster-container">
     <a href="anime-details.html?id=${anime.id}" class="poster-link">
       <img src="${posterUrl}" alt="${mainTitle}" class="poster-image" loading="lazy">
@@ -63,6 +68,38 @@ if (anime.nextAiringEpisode) {
     </a>
   </h4>
 </div>`;
+}
+
+// Distinct landscape "spotlight" card style for the Recommended row, so it
+// doesn't look like a duplicate of the Trending poster grid.
+function generateFeaturedCardHtml(anime, index = 0) {
+    const mainTitle = anime.title.english || anime.title.romaji;
+    const backdropUrl = anime.bannerImage || anime.coverImage.large;
+    const animeFormat = anime.format || "TV";
+    const staggerDelay = Math.min(index, 20);
+    const score = anime.averageScore ? (anime.averageScore / 10).toFixed(1) : null;
+
+    let totalEpisodes = "?";
+    if (anime.nextAiringEpisode) {
+        totalEpisodes = anime.nextAiringEpisode.episode - 1;
+    } else if (anime.episodes) {
+        totalEpisodes = anime.episodes;
+    } else {
+        totalEpisodes = 1;
+    }
+
+    return `
+  <a href="anime-details.html?id=${anime.id}" class="rec-card" style="--card-index: ${staggerDelay};" title="${mainTitle}">
+    <div class="rec-card-media" style="background-image: url('${backdropUrl}');"></div>
+    <div class="rec-card-scrim"></div>
+    <span class="rec-card-format">${animeFormat}</span>
+    ${score ? `<span class="rec-card-score"><i class="fas fa-star"></i> ${score}</span>` : ""}
+    <span class="rec-card-play"><i class="fas fa-play"></i></span>
+    <div class="rec-card-info">
+      <h4 class="rec-card-title">${mainTitle}</h4>
+      <span class="rec-card-meta">${totalEpisodes} EP</span>
+    </div>
+  </a>`;
 }
 
 let trendingAnimeList = [];
@@ -85,7 +122,10 @@ function renderTrendingPage(page = 1) {
     if (pageItems.length === 0) {
         trendingContainer.innerHTML = "<p style='padding-left: 5px; color: #a48cff; width: 100%; grid-column: 1 / -1;'>No trending anime available.</p>";
     } else {
-        trendingContainer.insertAdjacentHTML("beforeend", pageItems.map((anime, i) => generateCardHtml(anime, i)).join(""));
+        trendingContainer.insertAdjacentHTML("beforeend", pageItems.map((anime, i) => {
+            const rank = (trendingPage === 1 && i < 5) ? (i + 1) : null;
+            return generateCardHtml(anime, i, rank);
+        }).join(""));
     }
 
     pageIndicator.textContent = `Page ${trendingPage} of ${pageCount}`;
@@ -157,7 +197,7 @@ async function loadHomepageDatabase() {
         recommendedContainer.innerHTML = "";
         trendingContainer.innerHTML = "";
 
-        const recommendedMarkup = recommendedList.map((anime, i) => generateCardHtml(anime, i)).join("");
+        const recommendedMarkup = recommendedList.map((anime, i) => generateFeaturedCardHtml(anime, i)).join("");
         recommendedContainer.insertAdjacentHTML("beforeend", recommendedMarkup + recommendedMarkup);
 
         trendingAnimeList = trendingList;
